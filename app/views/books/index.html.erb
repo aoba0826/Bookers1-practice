@@ -1,0 +1,21 @@
+<h1>Books</h1>
+<%@books.each do |book|%>
+<%=book.title%>
+<%=book.body%>
+<%=link_to "Show",book_path(book.id)%>
+<%=link_to "Edit",edit_book_path(book.id)%>
+<%=link_to "Destroy",book_path(book.id),method: :delete%>
+<%end%>
+
+
+
+
+
+<h1>New Book</h1>
+<%=form_with model: @book,url: books_path,method: :post,local: true do |f|%>
+<p>title</p>
+ <%=f.text_field :title%><br>
+ <p>説明</p>
+ <%=f.text_area :body%><br>
+ <%=f.submit'投稿'%>
+<%end%>
