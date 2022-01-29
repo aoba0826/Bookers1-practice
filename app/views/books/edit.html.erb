@@ -1,5 +1,16 @@
+<% if @book.errors.any? %>
+   <ul>
+     <% @book.errors.full_messages.each do |message|%>
+       <li><%=message%></li>
+     <%end%>
+   </ul>
+<%end%>
+
+
+
+
 <h1>Editing Book</h1>
-<%=form_with model: @book,url: edit_book_path(@book.id),method: :patch,local: true do |f|%>
+<%=form_with model: @book,url: book_path(@book.id),method: :patch,local: true do |f|%>
 <label>title</label><br>
 <%=f.text_field :title%><br>
 <label>Body</label><br>
